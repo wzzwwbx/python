@@ -1,25 +1,25 @@
  #!/usr/bin/python
-# Filename: seq.py
+# Filename: backup_ver1.py
 
-shoplist = ['apple', 'mango', 'carrot', 'banana']
+import os
+import time
 
-# Indexing or 'Subscription' operation
-print 'Item 0 is', shoplist[0]
-print 'Item 1 is', shoplist[1]
-print 'Item 2 is', shoplist[2]
-print 'Item 3 is', shoplist[3]
-print 'Item -1 is', shoplist[-1]
-print 'Item -2 is', shoplist[-2]
+# 1. The files and directories to be backed up are specified in a list.
+source = ['/home/bingham/document/git/repos/python']
+# If you are using Windows, use source = [r'C:\Documents', r'D:\Work'] or something like that
 
-# Slicing on a list
-print 'Item 1 to 3 is', shoplist[1:3]
-print 'Item 2 to end is', shoplist[2:]
-print 'Item 1 to -1 is', shoplist[1:-1]
-print 'Item start to end is', shoplist[:]
+# 2. The backup must be stored in a main backup directory
+target_dir = '/home/bingham/' # Remember to change this to what you will be using
 
-# Slicing on a string
-name = 'swaroop'
-print 'characters 1 to 3 is', name[1:3]
-print 'characters 2 to end is', name[2:]
-print 'characters 1 to -1 is', name[1:-1]
-print 'characters start to end is', name[:] 
+# 3. The files are backed up into a zip file.
+# 4. The name of the zip archive is the current date and time
+target = target_dir + time.strftime('%Y%m%d%H%M%S') + '.zip'
+
+# 5. We use the zip command (in Unix/Linux) to put the files in a zip archive
+zip_command = "zip -qr '%s' %s" % (target, ' '.join(source))
+
+# Run the backup
+if os.system(zip_command) == 0:
+    print 'Successful backup to', target
+else:
+    print 'Backup FAILED' 
