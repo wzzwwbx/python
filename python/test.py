@@ -1,25 +1,25 @@
  #!/usr/bin/python
-# Filename: using_dict.py
+# Filename: seq.py
 
-# 'ab' is short for 'a'ddress'b'ook
+shoplist = ['apple', 'mango', 'carrot', 'banana']
 
-ab = {       'Swaroop'   : 'swaroopch@byteofpython.info',
-             'Larry'     : 'larry@wall.org',
-             'Matsumoto' : 'matz@ruby-lang.org',
-             'Spammer'   : 'spammer@hotmail.com'
-     }
+# Indexing or 'Subscription' operation
+print 'Item 0 is', shoplist[0]
+print 'Item 1 is', shoplist[1]
+print 'Item 2 is', shoplist[2]
+print 'Item 3 is', shoplist[3]
+print 'Item -1 is', shoplist[-1]
+print 'Item -2 is', shoplist[-2]
 
-print "Swaroop's address is %s" % ab['Swaroop']
+# Slicing on a list
+print 'Item 1 to 3 is', shoplist[1:3]
+print 'Item 2 to end is', shoplist[2:]
+print 'Item 1 to -1 is', shoplist[1:-1]
+print 'Item start to end is', shoplist[:]
 
-# Adding a key/value pair
-ab['Guido'] = 'guido@python.org'
-
-# Deleting a key/value pair
-del ab['Spammer']
-
-print '\nThere are %d contacts in the address-book\n' % len(ab)
-for name, address in ab.items():
-    print 'Contact %s at %s' % (name, address)
-
-if 'Guido' in ab: # OR ab.has_key('Guido')
-    print "\nGuido's address is %s" % ab['Guido'] 
+# Slicing on a string
+name = 'swaroop'
+print 'characters 1 to 3 is', name[1:3]
+print 'characters 2 to end is', name[2:]
+print 'characters 1 to -1 is', name[1:-1]
+print 'characters start to end is', name[:] 
